@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace EC_rfidReader
 {
@@ -290,6 +291,7 @@ namespace EC_rfidReader
 
         public void tagReport(int op, string uidStr, string blockDataStr, string DSFIDStr, string otherStr)
         {
+            string test_char;
             if (op == 0)//清空
             {
                 richTextBox2.Text = "";
@@ -297,8 +299,10 @@ namespace EC_rfidReader
             }
             else if (op == 1)//扫描
             {
+                //test_char = test_readTxt(uidStr);
                 //richTextBox2.AppendText(uidStr + " - dsfid:" + DSFIDStr + " - antid:" + otherStr + "\r\n");
                 richTextBox2.AppendText(uidStr + "\r\n");
+                //richTextBox2.AppendText(test_char + "\r\n");
             }
             else if (op == 2)//数量
             {
@@ -486,6 +490,22 @@ namespace EC_rfidReader
             //reader.RDR_ConfigBlockWrite(4, cfgdata, 8, 0xFFFF);
             //reader.RDR_ConfigBlockSave(4);
             MessageBox.Show( reader.RDR_LoadFactoryDefault().ToString());
+        }
+
+        public string test_readTxt(string uidStr)
+        {
+            FileStream file = new FileStream("Z:\\Documents\\EC_rfidReader_demo-C#net45 1.0.07\\EC_rfidReader_demo\\test.txt", FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(file, Encoding.GetEncoding("utf-8"));
+            string strLine;
+            while ((strLine = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(strLine.Split('\t'));
+            }
+
+
+                sr.Close();
+            file.Close();
+            return strLine;
         }
     }
 }
