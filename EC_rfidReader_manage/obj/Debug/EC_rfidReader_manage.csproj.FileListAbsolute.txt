@@ -1,0 +1,12 @@
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\EC_rfidReader_manage.exe.config
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\EC_rfidReader_manage.exe
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\EC_rfidReader_manage.pdb
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\rfidlib_reader.pdb
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.csprojAssemblyReference.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC_rfidReader.Form1.resources
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.Properties.Resources.resources
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.csproj.GenerateResource.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.csproj.CoreCompileInputs.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.csproj.CopyComplete
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.exe
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.pdb

@@ -1,0 +1,37 @@
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader\bin\Debug\EC_rfidReader_demo.exe.config
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader\obj\Debug\EC_rfidReader_demo.exe
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader\obj\Debug\EC_rfidReader_demo.pdb
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\bin\Debug\EC_rfidReader_demo.exe.config
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.exe
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.pdb
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\bin\Debug\EC_rfidReader_demo.exe
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\bin\Debug\EC_rfidReader_demo.pdb
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader.Form1.resources
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.Properties.Resources.resources
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.csproj.GenerateResource.Cache
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.csprojResolveAssemblyReference.cache
+E:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\bin\Debug\rfidlib_reader.pdb
+e:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\bin\Debug\rfidlib_reader.dll
+F:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\bin\Debug\EC_rfidReader_demo.exe.config
+F:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.exe
+F:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.pdb
+F:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\bin\Debug\EC_rfidReader_demo.exe
+F:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\bin\Debug\EC_rfidReader_demo.pdb
+F:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\bin\Debug\rfidlib_reader.pdb
+F:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader.Form1.resources
+F:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.Properties.Resources.resources
+F:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.csproj.GenerateResource.Cache
+F:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.csprojResolveAssemblyReference.cache
+F:\hasee\Documents\Visual Studio 2012\Projects\EC_rfidReader\DEMO\EC_rfidReader_demo\bin\Debug\rfidlib_reader.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\bin\Debug\EC_rfidReader_demo.exe.config
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\bin\Debug\EC_rfidReader_demo.exe
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\bin\Debug\EC_rfidReader_demo.pdb
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\bin\Debug\rfidlib_reader.pdb
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.csprojAssemblyReference.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\obj\Debug\EC_rfidReader.Form1.resources
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.Properties.Resources.resources
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.csproj.GenerateResource.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.csproj.CoreCompileInputs.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.csproj.CopyComplete
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.exe
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_demo\obj\Debug\EC_rfidReader_demo.pdb
