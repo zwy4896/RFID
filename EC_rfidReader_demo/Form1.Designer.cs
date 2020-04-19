@@ -112,6 +112,7 @@
             // 
             // b_open
             // 
+            this.b_open.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.b_open.Location = new System.Drawing.Point(3, 10);
             this.b_open.Name = "b_open";
             this.b_open.Size = new System.Drawing.Size(75, 31);
@@ -123,6 +124,7 @@
             // b_close
             // 
             this.b_close.Enabled = false;
+            this.b_close.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.b_close.Location = new System.Drawing.Point(84, 10);
             this.b_close.Name = "b_close";
             this.b_close.Size = new System.Drawing.Size(75, 31);
@@ -158,6 +160,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControl1.ItemSize = new System.Drawing.Size(120, 32);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -171,6 +174,7 @@
             this.tabPage1.Controls.Add(this.richTextBox2);
             this.tabPage1.Controls.Add(this.panel5);
             this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabPage1.Location = new System.Drawing.Point(4, 36);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -242,11 +246,12 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(28, 437);
+            this.button1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(31, 412);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 32);
             this.button1.TabIndex = 16;
-            this.button1.Text = "导出";
+            this.button1.Text = "清空";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -261,6 +266,7 @@
             // b_stopInventory
             // 
             this.b_stopInventory.Enabled = false;
+            this.b_stopInventory.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.b_stopInventory.Location = new System.Drawing.Point(31, 71);
             this.b_stopInventory.Name = "b_stopInventory";
             this.b_stopInventory.Size = new System.Drawing.Size(75, 32);
@@ -272,6 +278,7 @@
             // b_inventory
             // 
             this.b_inventory.Enabled = false;
+            this.b_inventory.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.b_inventory.Location = new System.Drawing.Point(31, 22);
             this.b_inventory.Name = "b_inventory";
             this.b_inventory.Size = new System.Drawing.Size(75, 32);

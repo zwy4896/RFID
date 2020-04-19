@@ -116,20 +116,49 @@ namespace EC_rfidReader
             }
             if (connstr != "")
             {
-                iret = reader.RDR_Open(connstr);
-                if (iret == 0 | connstr == "test")
+                try
                 {
-                    b_open.Enabled = false;
-                    b_close.Enabled = true;
-                    b_inventory.Enabled = true;
-                    b_stopInventory.Enabled = false;
+                    iret = reader.RDR_Open(connstr);
+                    if (iret == 0)
+                    {
+                        b_open.Enabled = false;
+                        b_close.Enabled = true;
+                        b_inventory.Enabled = true;
+                        b_stopInventory.Enabled = false;
 
-                    get_DriverInfo();
+                        get_DriverInfo();
+                    }
+                    else
+                    {
+                        MessageBox.Show("端口错误 " + iret.ToString());
+                    }
                 }
-                else
+                catch (ArgumentException)
                 {
-                    MessageBox.Show("open fail " + iret.ToString());
+                    MessageBox.Show("端口错误: " + "ArgumentException");
                 }
+                catch (IOException)
+                {
+                    MessageBox.Show("端口错误 " + "IOException");
+                }
+                catch (InvalidOperationException)
+                {
+                    MessageBox.Show("端口错误 " + "InvalidOperationException");
+                }
+                //iret = reader.RDR_Open(connstr);
+                //if (iret == 0 | connstr == "test")
+                //{
+                //    b_open.Enabled = false;
+                //    b_close.Enabled = true;
+                //    b_inventory.Enabled = true;
+                //    b_stopInventory.Enabled = false;
+
+                //    get_DriverInfo();
+                //}
+                //else
+                //{
+                //    MessageBox.Show("open fail " + iret.ToString());
+                //}
             }
 
         }
@@ -295,7 +324,7 @@ namespace EC_rfidReader
             //reader.RDR_ConfigBlockWrite(4, cfgdata, 8, 0xFFFF);
             //reader.RDR_ConfigBlockSave(4);
             //MessageBox.Show(reader.RDR_LoadFactoryDefault().ToString());
-            MessageBox.Show(richTextBox2.Text);
+            MessageBox.Show(richTextBox2.Text + " | " + textBox1.Text + " | ￥" + textBox2.Text);
         }
 
         public string[] test_readTxt(string uidStr)

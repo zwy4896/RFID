@@ -61,17 +61,6 @@ namespace EC_rfidReader
                 cbb_comPort.SelectedIndex = 0;
             }
         }
-
-        private static byte[] HexStrToByte(string hexString)
-        {
-            hexString = hexString.Replace(" ", "");
-            if ((hexString.Length % 2) != 0)
-                hexString += " ";
-            byte[] returnBytes = new byte[hexString.Length / 2];
-            for (int i = 0; i < returnBytes.Length; i++)
-                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
-            return returnBytes;
-        }
         
         private void b_open_Click(object sender, EventArgs e)
         {
@@ -101,11 +90,6 @@ namespace EC_rfidReader
                           RFIDLIB.rfidlib_def.CONNSTR_NAME_REMOTEIP + "=" + cbb_IPAddr.Text + ";" +
                           RFIDLIB.rfidlib_def.CONNSTR_NAME_REMOTEPORT + "=" + "6688";
             }
-            // 测试使用
-            else if (cbb_comPort.Text == "TEST")
-            {
-                connstr = "test";
-            }
             else
             {
                 connstr = RFIDLIB.rfidlib_def.CONNSTR_NAME_RDTYPE + "=" + "EC1501" + ";" +
@@ -117,20 +101,48 @@ namespace EC_rfidReader
             }
             if (connstr != "")
             {
-                iret = reader.RDR_Open(connstr);
-                if (iret == 0 | connstr == "test")
+                try
                 {
-                    b_open.Enabled = false;
-                    b_close.Enabled = true;
-                    b_inventory.Enabled = true;
-                    b_stopInventory.Enabled = false;
+                    iret = reader.RDR_Open(connstr);
+                    if (iret == 0)
+                    {
+                        b_open.Enabled = false;
+                        b_close.Enabled = true;
+                        b_inventory.Enabled = true;
+                        b_stopInventory.Enabled = false;
 
-                    get_DriverInfo();
+                        get_DriverInfo();
+                    }
+                    else
+                    {
+                        MessageBox.Show("端口错误 " + iret.ToString());
+                    }
                 }
-                else
+                catch(ArgumentException)
                 {
-                    MessageBox.Show("open fail " + iret.ToString());
+                    MessageBox.Show("端口错误: " + "ArgumentException");
                 }
+                catch (IOException)
+                {
+                    MessageBox.Show("端口错误 " + "IOException");
+                }
+                catch (InvalidOperationException)
+                {
+                    MessageBox.Show("端口错误 " + "InvalidOperationException");
+                }
+                //if (iret == 0)
+                //{
+                //    b_open.Enabled = false;
+                //    b_close.Enabled = true;
+                //    b_inventory.Enabled = true;
+                //    b_stopInventory.Enabled = false;
+
+                //    get_DriverInfo();
+                //}
+                //else
+                //{
+                //    MessageBox.Show("open fail " + iret.ToString());
+                //}
             }
 
         }
@@ -287,12 +299,6 @@ namespace EC_rfidReader
             b_open.Enabled = true;
         }
 
-        private void b_setOutput_Click(object sender, EventArgs e)
-        {
-            //设置设备输出端口
-            reader.RDR_SetOutput(RFIDLIB.rfidlib_def.OUTPUT_RELAY, 0x00, 0x02);
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             //byte[] cfgdata = new byte[8];
@@ -302,7 +308,10 @@ namespace EC_rfidReader
             //reader.RDR_ConfigBlockWrite(4, cfgdata, 8, 0xFFFF);
             //reader.RDR_ConfigBlockSave(4);
             //MessageBox.Show(reader.RDR_LoadFactoryDefault().ToString());
-            MessageBox.Show("TEST ONLY");
+            //MessageBox.Show("TEST ONLY");
+            richTextBox2.Clear();
+            label2.Text = "数量: ";
+            label1.Text = "金额: ";
         }
 
         public string[] test_readTxt(string uidStr)
