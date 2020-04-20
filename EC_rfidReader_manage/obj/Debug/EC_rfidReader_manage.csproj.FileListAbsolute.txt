@@ -10,3 +10,9 @@ Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC
 Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.csproj.CopyComplete
 Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.exe
 Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.pdb
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\MySql.Data.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\Google.Protobuf.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\BouncyCastle.Crypto.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\Ubiety.Dns.Core.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\Renci.SshNet.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\MySql.Data.xml

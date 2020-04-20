@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace EC_rfidReader
 {
@@ -34,7 +35,7 @@ namespace EC_rfidReader
         Thread InvenThread;
         public static bool doInventory = false;
 
-        delegate void HandleInterfaceReport(int op, string uidStr, string blockDataStr, string DSFIDStr, string otherStr, string[] testChar); //委托处理接收数据
+        delegate void HandleInterfaceReport(int op, string uidStr, string blockDataStr, string DSFIDStr, string otherStr); //委托处理接收数据
         HandleInterfaceReport tagReportHandler;
         public Form1()
         {
@@ -216,8 +217,8 @@ namespace EC_rfidReader
                 iret = reader.RDR_TagInventory(AIType, AntennaSelCount, AntennaSel);//盘点标签
                 if (iret == 0)
                 {
-                    Invoke(tagReportHandler, new object[] { 0, null, null, null, null, null });
-                    Invoke(tagReportHandler, new object[] { 2, null, null, null, reader.RDR_GetTagDataReportCount().ToString(), null });
+                    Invoke(tagReportHandler, new object[] { 0, null, null, null, null});
+                    Invoke(tagReportHandler, new object[] { 2, null, null, null, reader.RDR_GetTagDataReportCount().ToString() });
 
                     int TagDataReport;
                     TagDataReport = reader.RDR_GetTagDataReportCount();//获取标签数量
@@ -232,12 +233,10 @@ namespace EC_rfidReader
                         iret = reader.ISO15693_ParseTagDataReport(TagDataReport, ref ant_id, ref dsfid, ref uid);
                         if (iret == 0)
                         {
-                            string[] test_char;
-
                             string uidStr = BitConverter.ToString(uid).Replace("-", string.Empty);
-                            test_char = test_readTxt(uidStr);
+                            //test_char = test_readTxt(uidStr);
                             //object[] pList = { 1, uidStr, "", dsfid.ToString("X2") + " - AFI:" + afi.ToString("X2") + " - BlockData:" + blockData, ant_id.ToString().PadLeft(2, '0') };
-                            object[] pList = {1, uidStr, null, null, null, test_char};
+                            object[] pList = {1, uidStr, null, null, null};
                             Invoke(tagReportHandler, pList);
                         }
                     }
@@ -246,7 +245,7 @@ namespace EC_rfidReader
             }
         }
 
-        public void tagReport(int op, string uidStr, string blockDataStr, string DSFIDStr, string otherStr, string[] testChar)
+        public void tagReport(int op, string uidStr, string blockDataStr, string DSFIDStr, string otherStr)
         {
             if (op == 0)//清空
             {
@@ -317,35 +316,43 @@ namespace EC_rfidReader
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //byte[] cfgdata = new byte[8];
-            //int cfgsize = 8;
-            //reader.RDR_ConfigBlockRead(4, ref cfgdata, cfgsize);
-            //cfgdata[0] = 0x00;
-            //reader.RDR_ConfigBlockWrite(4, cfgdata, 8, 0xFFFF);
-            //reader.RDR_ConfigBlockSave(4);
-            //MessageBox.Show(reader.RDR_LoadFactoryDefault().ToString());
-            MessageBox.Show(richTextBox2.Text + " | " + textBox1.Text + " | ￥" + textBox2.Text);
+            //MessageBox.Show(richTextBox2.Text.Length + " | " + textBox1.Text + " | ￥" + textBox2.Text);
+
+            string constructorString = "server=localhost;User Id=root;password=1234567890;Database=test";
+            MySqlConnection myConnnect = new MySqlConnection(constructorString);
+            myConnnect.Open();
+            foreach(string charRFID in richTextBox2.Lines)
+            {
+                if (charRFID == "")
+                {
+                    continue;
+                }
+                //MySqlCommand myCmd = new MySqlCommand("INSERT INTO product(name,id) VALUES('test1',2)", myConnnect);
+                MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.test where RFID='" + charRFID + "';", myConnnect);
+                //Console.WriteLine(myCmd.CommandText);
+                //Console.WriteLine(myCmd.ExecuteNonQuery());
+                if (myCmd.ExecuteNonQuery() > 0)
+                {
+                    Console.WriteLine("更新数据");
+                    MySqlCommand updateCmd = new MySqlCommand("UPDATE test SET name='" + textBox1.Text + "',price=" + textBox2.Text + ";", myConnnect);
+                    Console.WriteLine(updateCmd.CommandText);
+                    updateCmd.ExecuteNonQuery();
+
+                }
+                else if (myCmd.ExecuteNonQuery() == -1)
+                {
+                    Console.WriteLine("插入数据");
+                    MySqlCommand updateCmd = new MySqlCommand("INSERT INTO test(RFID,name,price) VALUES('" + charRFID + "','" + textBox1.Text + "'," + textBox2.Text + ");", myConnnect);
+                    //MySqlCommand updateCmd = new MySqlCommand("UPDATE test SET name='" + textBox1.Text + "',price=" + textBox2.Text, myConnnect);
+                    Console.WriteLine(updateCmd.CommandText);
+                    updateCmd.ExecuteNonQuery();
+                    //Console.ReadKey();//防止黑框闪退，可以看到结果
+                }
+                myConnnect.Close();
+            }
+
         }
 
-        public string[] test_readTxt(string uidStr)
-        {
-            FileStream file = new FileStream("Z:\\Documents\\EC_rfidReader_demo-C#net45 1.0.07\\EC_rfidReader_demo\\test.txt", FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(file, Encoding.GetEncoding("utf-8"));
-            string strLine;
-            string[] strSplit = { };
-            while ((strLine = sr.ReadLine()) != null)
-            {
-                if (strLine.Contains(uidStr))
-                {
-                    strSplit = strLine.Split('|');
-                    //Console.WriteLine(strSplit[1] + " " + strSplit[2]);
-                    break;
-                }
-            }
-            sr.Close();
-            file.Close();
-            return strSplit;
-        }
         private void TextBox1_MouseClick(object sender, MouseEventArgs e)
         {
             textBox1.Text = "";

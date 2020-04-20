@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace EC_rfidReader
 {
@@ -37,6 +38,7 @@ namespace EC_rfidReader
         delegate void HandleInterfaceReport(int op, string uidStr, string blockDataStr, string DSFIDStr, string otherStr, string[] testChar); //委托处理接收数据
         HandleInterfaceReport tagReportHandler;
         float total_price = 0;  // 菜品总价
+        float out_totalPrice = 0;
         public Form1()
         {
             InitializeComponent();
@@ -193,18 +195,18 @@ namespace EC_rfidReader
         {
             Byte AIType = RFIDLIB.rfidlib_def.AI_TYPE_NEW;
             AntennaSelCount = 0;
-
             while (!_shouldStop)
             {
                 int iret;
                 iret = reader.RDR_TagInventory(AIType, AntennaSelCount, AntennaSel);//盘点标签
                 if (iret == 0)
                 {
-                    Invoke(tagReportHandler, new object[] { 0, null, null, null, null, null });
-                    Invoke(tagReportHandler, new object[] { 2, null, null, null, reader.RDR_GetTagDataReportCount().ToString(), null });
+                    Invoke(tagReportHandler, new object[] { 0, null, null, null, null, null});
+                    Invoke(tagReportHandler, new object[] { 2, null, null, null, reader.RDR_GetTagDataReportCount().ToString(), null});
 
                     int TagDataReport;
                     TagDataReport = reader.RDR_GetTagDataReportCount();//获取标签数量
+                    //int tagData = TagDataReport;
                     while (TagDataReport > 0)
                     {
                         TagDataReport--;
@@ -220,16 +222,19 @@ namespace EC_rfidReader
 
                             string uidStr = BitConverter.ToString(uid).Replace("-", string.Empty);
                             test_char = test_readTxt(uidStr);
-                            total_price += int.Parse(test_char[2]);
+                            total_price += float.Parse(test_char[2]);
                             //object[] pList = { 1, uidStr, "", dsfid.ToString("X2") + " - AFI:" + afi.ToString("X2") + " - BlockData:" + blockData, ant_id.ToString().PadLeft(2, '0') };
                             object[] pList = {1, uidStr, null, null, null, test_char};
+                            //Console.WriteLine(count.ToString() + " " + tagData.ToString());
                             Invoke(tagReportHandler, pList);
                         }
                     }
                 }
+                out_totalPrice = total_price;
                 total_price = 0;
                 Thread.Sleep(5);
             }
+            //MessageBox.Show(out_totalPrice.ToString());
         }
 
         public void tagReport(int op, string uidStr, string blockDataStr, string DSFIDStr, string otherStr, string[] testChar)
@@ -316,22 +321,60 @@ namespace EC_rfidReader
 
         public string[] test_readTxt(string uidStr)
         {
-            FileStream file = new FileStream("Z:\\Documents\\EC_rfidReader_demo-C#net45 1.0.07\\EC_rfidReader_demo\\test.txt", FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(file, Encoding.GetEncoding("utf-8"));
-            string strLine;
-            string[] strSplit = { };
-            while ((strLine = sr.ReadLine()) != null)
+            string[] strSplit = {"", "", ""};
+            //FileStream file = new FileStream("Z:\\Documents\\EC_rfidReader_demo-C#net45 1.0.07\\EC_rfidReader_demo\\test.txt", FileMode.Open, FileAccess.Read);
+            //StreamReader sr = new StreamReader(file, Encoding.GetEncoding("utf-8"));
+            //string strLine;
+            //while ((strLine = sr.ReadLine()) != null)
+            //{
+            //    if (strLine.Contains(uidStr))
+            //    {
+            //        strSplit = strLine.Split('|');
+            //        //Console.WriteLine(strSplit[1] + " " + strSplit[2]);
+            //        break;
+            //    }
+            //}
+            //sr.Close();
+            //file.Close();
+            MySqlDataReader reader = null;
+            string constructorString = "server=localhost;User Id=root;password=1234567890;Database=test";
+            MySqlConnection myConnnect = new MySqlConnection(constructorString);
+            myConnnect.Open();
+            MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.test where RFID='" + uidStr + "'", myConnnect);
+            // 查询结果返回给读取器
+            reader = myCmd.ExecuteReader();
+            if (reader.Read())
             {
-                if (strLine.Contains(uidStr))
-                {
-                    strSplit = strLine.Split('|');
-                    //Console.WriteLine(strSplit[1] + " " + strSplit[2]);
-                    break;
-                }
+                strSplit[0] = reader[1].ToString();
+                strSplit[1] = reader[2].ToString();
+                strSplit[2] = reader[3].ToString();
             }
-            sr.Close();
-            file.Close();
+            if (reader != null)
+            {
+                reader.Close();
+            }
+            if(myConnnect != null)
+            {
+                myConnnect.Close();
+            }
             return strSplit;
+        }
+
+        private void Button2_Click_1(object sender, EventArgs e)
+        {
+            string constructorString = "server=localhost;User Id=root;password=1234567890;Database=test";
+            MySqlConnection myConnnect = new MySqlConnection(constructorString);
+            myConnnect.Open();
+            MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.test where RFID='BEED1ED4500104E0'", myConnnect);
+            //MySqlCommand myCmd = new MySqlCommand("INSERT INTO product(name,id) VALUES('test1',2)", myConnnect);
+            Console.WriteLine(myCmd.CommandText);
+            if (myCmd.ExecuteNonQuery() == -1)
+            {
+                Console.WriteLine("更新数据");
+                MySqlCommand updateCmd = new MySqlCommand("UPDATE test SET name='土豆丝',price=5", myConnnect);
+                updateCmd.ExecuteNonQuery();
+                //Console.ReadKey();//防止黑框闪退，可以看到结果
+            }
         }
     }
 }
