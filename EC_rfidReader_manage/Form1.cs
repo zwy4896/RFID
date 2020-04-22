@@ -337,7 +337,6 @@ namespace EC_rfidReader
                     MySqlCommand updateCmd = new MySqlCommand("UPDATE test SET name='" + textBox1.Text + "',price=" + textBox2.Text + ";", myConnnect);
                     Console.WriteLine(updateCmd.CommandText);
                     updateCmd.ExecuteNonQuery();
-
                 }
                 else if (myCmd.ExecuteNonQuery() == -1)
                 {

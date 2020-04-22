@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
+using CSharpDEMO;
 
 namespace EC_rfidReader
 {
@@ -45,6 +47,25 @@ namespace EC_rfidReader
             tagReportHandler = new HandleInterfaceReport(tagReport);//实例化委托对象（处理接收数据）
         }
 
+        //转换卡号专用
+        private byte[] convertSNR(string str, int keyN)
+        {
+            string regex = "[^a-fA-F0-9]";
+            string tmpJudge = Regex.Replace(str, regex, "");
+
+            //长度不对，直接退回错误
+            if (tmpJudge.Length != 12) return null;
+
+            string[] tmpResult = Regex.Split(str, regex);
+            byte[] result = new byte[keyN];
+            int i = 0;
+            foreach (string tmp in tmpResult)
+            {
+                result[i] = Convert.ToByte(tmp, 16);
+                i++;
+            }
+            return result;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             int nCOMCnt = reader.COMPort_Enum();
@@ -221,7 +242,7 @@ namespace EC_rfidReader
                             string[] test_char;
 
                             string uidStr = BitConverter.ToString(uid).Replace("-", string.Empty);
-                            test_char = test_readTxt(uidStr);
+                            test_char = Read_Menu(uidStr);
                             total_price += float.Parse(test_char[2]);
                             //object[] pList = { 1, uidStr, "", dsfid.ToString("X2") + " - AFI:" + afi.ToString("X2") + " - BlockData:" + blockData, ant_id.ToString().PadLeft(2, '0') };
                             object[] pList = {1, uidStr, null, null, null, test_char};
@@ -319,23 +340,9 @@ namespace EC_rfidReader
             label1.Text = "金额: ";
         }
 
-        public string[] test_readTxt(string uidStr)
+        private string[] Read_Menu(string uidStr)
         {
             string[] strSplit = {"", "", ""};
-            //FileStream file = new FileStream("Z:\\Documents\\EC_rfidReader_demo-C#net45 1.0.07\\EC_rfidReader_demo\\test.txt", FileMode.Open, FileAccess.Read);
-            //StreamReader sr = new StreamReader(file, Encoding.GetEncoding("utf-8"));
-            //string strLine;
-            //while ((strLine = sr.ReadLine()) != null)
-            //{
-            //    if (strLine.Contains(uidStr))
-            //    {
-            //        strSplit = strLine.Split('|');
-            //        //Console.WriteLine(strSplit[1] + " " + strSplit[2]);
-            //        break;
-            //    }
-            //}
-            //sr.Close();
-            //file.Close();
             MySqlDataReader reader = null;
             string constructorString = "server=localhost;User Id=root;password=1234567890;Database=test";
             MySqlConnection myConnnect = new MySqlConnection(constructorString);
@@ -359,22 +366,72 @@ namespace EC_rfidReader
             }
             return strSplit;
         }
-
-        private void Button2_Click_1(object sender, EventArgs e)
+        private void Read_Card_Info(string rfid)
         {
+            //string balance = ""; // 账户余额
             string constructorString = "server=localhost;User Id=root;password=1234567890;Database=test";
             MySqlConnection myConnnect = new MySqlConnection(constructorString);
             myConnnect.Open();
-            MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.test where RFID='BEED1ED4500104E0'", myConnnect);
-            //MySqlCommand myCmd = new MySqlCommand("INSERT INTO product(name,id) VALUES('test1',2)", myConnnect);
-            Console.WriteLine(myCmd.CommandText);
-            if (myCmd.ExecuteNonQuery() == -1)
-            {
-                Console.WriteLine("更新数据");
-                MySqlCommand updateCmd = new MySqlCommand("UPDATE test SET name='土豆丝',price=5", myConnnect);
-                updateCmd.ExecuteNonQuery();
-                //Console.ReadKey();//防止黑框闪退，可以看到结果
-            }
+            MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.card_info where RFID='" + rfid + "'", myConnnect);
+            myCmd.ExecuteNonQuery();
+            MySqlCommand insertCmd = new MySqlCommand("INSERT INTO card_info(RFID,name,bal) VALUES('" + rfid + "','" + "张三" + "','" + 1000 + "');", myConnnect);
+            Console.WriteLine(insertCmd.CommandText);
+            insertCmd.ExecuteNonQuery();
+            myConnnect.Close();
+
+            //return balance;
         }
+        private string ConvertData(byte[] data, int s, int e)
+        {
+            string dataOut = "";
+            //非负转换
+            for (int i = 0; i < e; i++)
+            {
+                if (data[s + i] < 0)
+                    data[s + i] = Convert.ToByte(Convert.ToInt32(data[s + i]) + 256);
+            }
+            for (int i = 0; i < e; i++)
+            {
+                dataOut += data[s + i].ToString("X2");
+            }
+            return dataOut;
+        }
+        private void Button2_Click_1(object sender, EventArgs e)
+        {
+            string rfid = Read_Card();
+            MessageBox.Show("卡号:" + rfid);
+            Read_Card_Info(rfid);
+        }
+        private string Read_Card()
+        {
+            byte mode1 = (byte)0x00;
+            byte mode2 = (byte)0x00;
+            byte mode = (byte)((mode1 << 1) | mode2);
+            byte blk_add = Convert.ToByte(10.ToString(), 16);
+            byte num_blk = Convert.ToByte(01.ToString(), 16);
+
+            string rfid = "";
+            byte[] snr = new byte[6];
+            snr = convertSNR("FF FF FF FF FF FF", 6);
+            if (snr == null)
+            {
+                MessageBox.Show("序列号无效！", "错误");
+                //return rfid;
+            }
+
+            byte[] buffer = new byte[16 * num_blk];
+            int nRet = Reader.MF_Read(mode, blk_add, num_blk, snr, buffer);
+            if (nRet != 0)
+            {
+                MessageBox.Show("test: " + buffer[0].ToString());
+            }
+            else
+            {
+                rfid = ConvertData(snr, 0, 4);
+                //MessageBox.Show("卡号: " + rfid);
+            }
+            return rfid;
+        }
+
     }
 }
