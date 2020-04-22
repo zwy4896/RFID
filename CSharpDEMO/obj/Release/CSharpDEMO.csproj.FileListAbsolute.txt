@@ -1,0 +1,10 @@
+Z:\Documents\XKIC读写器开发包USB\XKIC读写器开发包USB\Demo program\C#\CSharpWinForm_CH\CSharpDEMO\CSharpDEMO\bin\Release\CSharpDEMO.exe.config
+Z:\Documents\XKIC读写器开发包USB\XKIC读写器开发包USB\Demo program\C#\CSharpWinForm_CH\CSharpDEMO\CSharpDEMO\bin\Release\CSharpDEMO.exe
+Z:\Documents\XKIC读写器开发包USB\XKIC读写器开发包USB\Demo program\C#\CSharpWinForm_CH\CSharpDEMO\CSharpDEMO\bin\Release\CSharpDEMO.pdb
+Z:\Documents\XKIC读写器开发包USB\XKIC读写器开发包USB\Demo program\C#\CSharpWinForm_CH\CSharpDEMO\CSharpDEMO\obj\Release\CSharpDEMO.csprojAssemblyReference.cache
+Z:\Documents\XKIC读写器开发包USB\XKIC读写器开发包USB\Demo program\C#\CSharpWinForm_CH\CSharpDEMO\CSharpDEMO\obj\Release\CSharpDEMO.Form1.resources
+Z:\Documents\XKIC读写器开发包USB\XKIC读写器开发包USB\Demo program\C#\CSharpWinForm_CH\CSharpDEMO\CSharpDEMO\obj\Release\CSharpDEMO.Properties.Resources.resources
+Z:\Documents\XKIC读写器开发包USB\XKIC读写器开发包USB\Demo program\C#\CSharpWinForm_CH\CSharpDEMO\CSharpDEMO\obj\Release\CSharpDEMO.csproj.GenerateResource.cache
+Z:\Documents\XKIC读写器开发包USB\XKIC读写器开发包USB\Demo program\C#\CSharpWinForm_CH\CSharpDEMO\CSharpDEMO\obj\Release\CSharpDEMO.csproj.CoreCompileInputs.cache
+Z:\Documents\XKIC读写器开发包USB\XKIC读写器开发包USB\Demo program\C#\CSharpWinForm_CH\CSharpDEMO\CSharpDEMO\obj\Release\CSharpDEMO.exe
+Z:\Documents\XKIC读写器开发包USB\XKIC读写器开发包USB\Demo program\C#\CSharpWinForm_CH\CSharpDEMO\CSharpDEMO\obj\Release\CSharpDEMO.pdb

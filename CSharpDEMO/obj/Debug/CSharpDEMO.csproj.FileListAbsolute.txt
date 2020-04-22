@@ -1,0 +1,17 @@
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\bin\Debug\CSharpDEMO.exe.config
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\bin\Debug\CSharpDEMO.exe
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\bin\Debug\CSharpDEMO.pdb
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.csprojAssemblyReference.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.Form1.resources
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.Properties.Resources.resources
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.csproj.GenerateResource.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.csproj.CoreCompileInputs.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.exe
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.pdb
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\bin\Debug\MySql.Data.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\bin\Debug\Google.Protobuf.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\bin\Debug\BouncyCastle.Crypto.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\bin\Debug\Ubiety.Dns.Core.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\bin\Debug\Renci.SshNet.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\bin\Debug\MySql.Data.xml
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.csproj.CopyComplete
