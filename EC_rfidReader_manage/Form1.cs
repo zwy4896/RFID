@@ -327,29 +327,27 @@ namespace EC_rfidReader
                 {
                     continue;
                 }
-                //MySqlCommand myCmd = new MySqlCommand("INSERT INTO product(name,id) VALUES('test1',2)", myConnnect);
-                MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.test where RFID='" + charRFID + "';", myConnnect);
+                //MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.test1 where RFID='" + charRFID + "';", myConnnect);
+                MySqlCommand myCmd = new MySqlCommand("select 1 from test.test1 where RFID = '" + charRFID + "';", myConnnect);
                 //Console.WriteLine(myCmd.CommandText);
-                //Console.WriteLine(myCmd.ExecuteNonQuery());
-                if (myCmd.ExecuteNonQuery() > 0)
+                //Console.WriteLine(myCmd.ExecuteScalar());
+                if (myCmd.ExecuteScalar() != null)
                 {
                     Console.WriteLine("更新数据");
-                    MySqlCommand updateCmd = new MySqlCommand("UPDATE test SET name='" + textBox1.Text + "',price=" + textBox2.Text + ";", myConnnect);
+                    MySqlCommand updateCmd = new MySqlCommand("UPDATE test1 SET name='" + textBox1.Text + "',price=" + textBox2.Text + " where RFID='" + charRFID + "';", myConnnect);
                     Console.WriteLine(updateCmd.CommandText);
                     updateCmd.ExecuteNonQuery();
                 }
-                else if (myCmd.ExecuteNonQuery() == -1)
+                else if (myCmd.ExecuteScalar() == null)
                 {
                     Console.WriteLine("插入数据");
-                    MySqlCommand updateCmd = new MySqlCommand("INSERT INTO test(RFID,name,price) VALUES('" + charRFID + "','" + textBox1.Text + "'," + textBox2.Text + ");", myConnnect);
+                    MySqlCommand updateCmd = new MySqlCommand("INSERT INTO test1(RFID,name,price) VALUES('" + charRFID + "','" + textBox1.Text + "'," + textBox2.Text + ");", myConnnect);
                     //MySqlCommand updateCmd = new MySqlCommand("UPDATE test SET name='" + textBox1.Text + "',price=" + textBox2.Text, myConnnect);
                     Console.WriteLine(updateCmd.CommandText);
                     updateCmd.ExecuteNonQuery();
-                    //Console.ReadKey();//防止黑框闪退，可以看到结果
                 }
-                myConnnect.Close();
             }
-
+            myConnnect.Close();
         }
 
         private void TextBox1_MouseClick(object sender, MouseEventArgs e)
