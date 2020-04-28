@@ -46,10 +46,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.b_stopInventory = new System.Windows.Forms.Button();
             this.b_inventory = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label_cash = new System.Windows.Forms.Label();
+            this.label_balance = new System.Windows.Forms.Label();
+            this.label_display = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -60,6 +65,7 @@
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -69,7 +75,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(884, 50);
+            this.panel3.Size = new System.Drawing.Size(1143, 50);
             this.panel3.TabIndex = 6;
             // 
             // splitContainer1
@@ -166,7 +172,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(884, 511);
+            this.tabControl1.Size = new System.Drawing.Size(1143, 591);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 8;
             // 
@@ -175,23 +181,24 @@
             this.tabPage1.Controls.Add(this.richTextBox2);
             this.tabPage1.Controls.Add(this.panel5);
             this.tabPage1.Controls.Add(this.panel2);
-            this.tabPage1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tabPage1.Controls.Add(this.panel4);
+            this.tabPage1.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabPage1.Location = new System.Drawing.Point(4, 36);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(876, 471);
+            this.tabPage1.Size = new System.Drawing.Size(1135, 551);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "清单";
+            this.tabPage1.Text = "菜单";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // richTextBox2
             // 
+            this.richTextBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox2.Font = new System.Drawing.Font("宋体", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.richTextBox2.Location = new System.Drawing.Point(3, 3);
+            this.richTextBox2.Location = new System.Drawing.Point(6, 14);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(737, 412);
+            this.richTextBox2.Size = new System.Drawing.Size(585, 473);
             this.richTextBox2.TabIndex = 10;
             this.richTextBox2.Text = "";
             // 
@@ -201,9 +208,9 @@
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(3, 415);
+            this.panel5.Location = new System.Drawing.Point(3, 495);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(737, 53);
+            this.panel5.Size = new System.Drawing.Size(1129, 53);
             this.panel5.TabIndex = 9;
             // 
             // label2
@@ -212,7 +219,7 @@
             this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label2.Font = new System.Drawing.Font("宋体", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(90, 3);
+            this.label2.Location = new System.Drawing.Point(5, 1);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(207, 52);
             this.label2.TabIndex = 9;
@@ -225,7 +232,7 @@
             this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Font = new System.Drawing.Font("宋体", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(313, 1);
+            this.label1.Location = new System.Drawing.Point(228, 1);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(326, 52);
             this.label1.TabIndex = 8;
@@ -234,34 +241,35 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.b_stopInventory);
             this.panel2.Controls.Add(this.b_inventory);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(740, 3);
+            this.panel2.Location = new System.Drawing.Point(603, 376);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(133, 465);
+            this.panel2.Size = new System.Drawing.Size(519, 110);
             this.panel2.TabIndex = 6;
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(29, 216);
+            this.button2.Location = new System.Drawing.Point(272, 19);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button2.Size = new System.Drawing.Size(75, 32);
             this.button2.TabIndex = 17;
-            this.button2.Text = "test";
+            this.button2.Text = "刷卡";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click_1);
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(31, 412);
+            this.button1.Location = new System.Drawing.Point(272, 57);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 32);
             this.button1.TabIndex = 16;
@@ -269,19 +277,12 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel4
-            // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Location = new System.Drawing.Point(11, 127);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(110, 1);
-            this.panel4.TabIndex = 12;
-            // 
             // b_stopInventory
             // 
+            this.b_stopInventory.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.b_stopInventory.Enabled = false;
             this.b_stopInventory.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.b_stopInventory.Location = new System.Drawing.Point(31, 71);
+            this.b_stopInventory.Location = new System.Drawing.Point(27, 57);
             this.b_stopInventory.Name = "b_stopInventory";
             this.b_stopInventory.Size = new System.Drawing.Size(75, 32);
             this.b_stopInventory.TabIndex = 6;
@@ -291,14 +292,16 @@
             // 
             // b_inventory
             // 
+            this.b_inventory.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.b_inventory.BackColor = System.Drawing.SystemColors.ControlLight;
             this.b_inventory.Enabled = false;
             this.b_inventory.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.b_inventory.Location = new System.Drawing.Point(31, 22);
+            this.b_inventory.Location = new System.Drawing.Point(27, 19);
             this.b_inventory.Name = "b_inventory";
             this.b_inventory.Size = new System.Drawing.Size(75, 32);
             this.b_inventory.TabIndex = 5;
             this.b_inventory.Text = "开始";
-            this.b_inventory.UseVisualStyleBackColor = true;
+            this.b_inventory.UseVisualStyleBackColor = false;
             this.b_inventory.Click += new System.EventHandler(this.b_inventory_Click);
             // 
             // panel1
@@ -308,20 +311,97 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(884, 511);
+            this.panel1.Size = new System.Drawing.Size(1143, 591);
             this.panel1.TabIndex = 6;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel4.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.label_display);
+            this.panel4.Controls.Add(this.label_cash);
+            this.panel4.Controls.Add(this.label_balance);
+            this.panel4.Location = new System.Drawing.Point(603, 14);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(519, 356);
+            this.panel4.TabIndex = 11;
+            // 
+            // label_cash
+            // 
+            this.label_cash.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_cash.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label_cash.Font = new System.Drawing.Font("宋体", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_cash.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_cash.Location = new System.Drawing.Point(142, 9);
+            this.label_cash.Name = "label_cash";
+            this.label_cash.Size = new System.Drawing.Size(140, 52);
+            this.label_cash.TabIndex = 9;
+            this.label_cash.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label_balance
+            // 
+            this.label_balance.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_balance.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label_balance.Font = new System.Drawing.Font("宋体", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_balance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_balance.Location = new System.Drawing.Point(142, 84);
+            this.label_balance.Name = "label_balance";
+            this.label_balance.Size = new System.Drawing.Size(140, 52);
+            this.label_balance.TabIndex = 8;
+            this.label_balance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label_display
+            // 
+            this.label_display.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label_display.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label_display.Font = new System.Drawing.Font("宋体", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_display.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_display.Location = new System.Drawing.Point(1, 213);
+            this.label_display.Name = "label_display";
+            this.label_display.Size = new System.Drawing.Size(515, 52);
+            this.label_display.TabIndex = 10;
+            this.label_display.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Font = new System.Drawing.Font("宋体", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(140, 52);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "消费: ";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.Font = new System.Drawing.Font("宋体", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Location = new System.Drawing.Point(12, 84);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(140, 52);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "余额: ";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(1143, 641);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HD Tech 智慧食堂自动结算系统";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel3.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -334,6 +414,7 @@
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -354,12 +435,17 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button b_stopInventory;
         private System.Windows.Forms.Button b_inventory;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label_display;
+        private System.Windows.Forms.Label label_cash;
+        private System.Windows.Forms.Label label_balance;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }
 

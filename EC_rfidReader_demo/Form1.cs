@@ -223,7 +223,7 @@ namespace EC_rfidReader
                 if (iret == 0)
                 {
                     Invoke(tagReportHandler, new object[] { 0, null, null, null, null, null});
-                    Invoke(tagReportHandler, new object[] { 2, null, null, null, reader.RDR_GetTagDataReportCount().ToString(), null});
+                    Invoke(tagReportHandler, new object[] { 2, null, null, null, reader.RDR_GetTagDataReportCount().ToString(), null });
 
                     int TagDataReport;
                     TagDataReport = reader.RDR_GetTagDataReportCount();//获取标签数量
@@ -243,7 +243,14 @@ namespace EC_rfidReader
 
                             string uidStr = BitConverter.ToString(uid).Replace("-", string.Empty);
                             test_char = Read_Menu(uidStr);
-                            total_price += float.Parse(test_char[2]);
+                            if (test_char[2] != "")
+                            {
+                                total_price += float.Parse(test_char[2]);
+                            }
+                            else
+                            {
+                                continue;
+                            }
                             //object[] pList = { 1, uidStr, "", dsfid.ToString("X2") + " - AFI:" + afi.ToString("X2") + " - BlockData:" + blockData, ant_id.ToString().PadLeft(2, '0') };
                             object[] pList = {1, uidStr, null, null, null, test_char};
                             //Console.WriteLine(count.ToString() + " " + tagData.ToString());
@@ -348,13 +355,21 @@ namespace EC_rfidReader
             MySqlConnection myConnnect = new MySqlConnection(constructorString);
             myConnnect.Open();
             MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.test1 where RFID='" + uidStr + "'", myConnnect);
+            //MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.test1 where uid='" + uidStr + "'", myConnnect);
             // 查询结果返回给读取器
-            reader = myCmd.ExecuteReader();
-            if (reader.Read())
+            if (myCmd.ExecuteScalar() != null)
             {
-                strSplit[0] = reader[1].ToString();
-                strSplit[1] = reader[2].ToString();
-                strSplit[2] = reader[3].ToString();
+                reader = myCmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    strSplit[0] = reader[1].ToString();
+                    strSplit[1] = reader[2].ToString();
+                    strSplit[2] = reader[3].ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show(uidStr + "不存在");
             }
             if (reader != null)
             {
@@ -374,15 +389,23 @@ namespace EC_rfidReader
             string constructorString = "server=localhost;User Id=root;password=1234567890;Database=test";
             MySqlConnection myConnnect = new MySqlConnection(constructorString);
             myConnnect.Open();
-            MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.card_info where RFID='" + rfid + "'", myConnnect);
+            MySqlCommand myCmd = new MySqlCommand("SELECT * FROM card_info where RFID='" + rfid + "'", myConnnect);
             // 查询结果返回给读取器
-            reader = myCmd.ExecuteReader();
-            if (reader.Read())
+            if (myCmd.ExecuteScalar() != null)
             {
-                card_info[0] = reader[1].ToString();
-                card_info[1] = reader[2].ToString();
-                card_info[2] = reader[3].ToString();
+                reader = myCmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    card_info[0] = reader[1].ToString();
+                    card_info[1] = reader[2].ToString();
+                    card_info[2] = reader[3].ToString();
+                }
             }
+            else
+            {
+                return card_info;
+            }
+
             if (reader != null)
             {
                 reader.Close();
@@ -391,30 +414,42 @@ namespace EC_rfidReader
             {
                 myConnnect.Close();
             }
+            //Console.WriteLine(rfid, card_info);
             return card_info;
         }
-        private void Update_Card_Info(string rfid, float cost)
+        private void Update_Card_Info(string rfid, float cost, string[] card_info)
         {
             //string balance = ""; // 账户余额
             string constructorString = "server=localhost;User Id=root;password=1234567890;Database=test";
             MySqlConnection myConnnect = new MySqlConnection(constructorString);
             myConnnect.Open();
             //MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.card_info where RFID='" + rfid + "'", myConnnect);
-            MySqlCommand myCmd = new MySqlCommand("select 1 from test.card_info where RFID = '" + rfid + "';", myConnnect);
+            MySqlCommand myCmd = new MySqlCommand("select 1 from card_info where RFID = '" + rfid + "';", myConnnect);
             if (myCmd.ExecuteScalar() != null)
             {
-                Console.WriteLine("更新数据");
-                MySqlCommand updateCmd = new MySqlCommand("UPDATE card_info SET name='" + "张三" + "',balance=" + cost + " where RFID='" + rfid + "';", myConnnect);
-                Console.WriteLine(updateCmd.CommandText);
-                updateCmd.ExecuteNonQuery();
-                MessageBox.Show("刷卡成功! 共消费:" + out_totalPrice + "元");
+                if (cost >= 0)
+                {
+                    Console.WriteLine("更新数据");
+                    MySqlCommand updateCmd = new MySqlCommand("UPDATE card_info SET name='" + "张三" + "',balance=" + cost + " where RFID='" + rfid + "';", myConnnect);
+                    Console.WriteLine(updateCmd.CommandText);
+                    updateCmd.ExecuteNonQuery();
+                    //MessageBox.Show("刷卡成功! 共消费:" + out_totalPrice + "元" + " 余额:" + cost);
+                    label_cash.Text = out_totalPrice.ToString();
+                    label_balance.Text = card_info[2].ToString();
+                    label_display.Text = "祝您用餐愉快！";
+                }
+                else
+                {
+                    //MessageBox.Show("余额不足，请充值！");
+                    label_display.Text = "余额不足，请充值！";
+                }
             }
             else if (myCmd.ExecuteScalar() == null)
             {
-                MessageBox.Show("请激活卡!");
+                //MessageBox.Show("请激活卡!");
                 //Console.WriteLine("插入数据");
-                //MySqlCommand updateCmd = new MySqlCommand("INSERT INTO card_info(RFID,name,balance) VALUES('" + rfid + "','" + "张三" + "'," + 100 + ");", myConnnect);
-                //updateCmd.ExecuteNonQuery();
+                //MySqlCommand updateCmd = new MySqlCommand("INSERT INTO card_info(RFID,name,balance) VALUES('" + rfid + "','" + "张三" + "'," + 1000 + ");", myConnnect);
+                MessageBox.Show("请激活卡!");
             }
             myConnnect.Close();
 
@@ -438,13 +473,16 @@ namespace EC_rfidReader
         private void Button2_Click_1(object sender, EventArgs e)
         {
             string rfid = Read_Card();
-            float balance;
+            float balance = 0;
             //MessageBox.Show("卡号:" + rfid);
             string[] card_info = Read_Card_Info(rfid);
-            balance = Convert.ToSingle(card_info[2]); // 账户余额
-            balance -= out_totalPrice;
+            if (card_info[1] != "" && card_info != null)
+            {
+                balance = Convert.ToSingle(card_info[2]); // 账户余额
+                balance -= out_totalPrice;
+            }
             //Console.WriteLine(card_info[2].ToString());
-            Update_Card_Info(rfid, balance);
+            Update_Card_Info(rfid, balance, card_info);
         }
         private string Read_Card()
         {
@@ -477,5 +515,9 @@ namespace EC_rfidReader
             return rfid;
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
     }
 }

@@ -16,3 +16,20 @@ Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\Bo
 Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\Ubiety.Dns.Core.dll
 Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\Renci.SshNet.dll
 Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Debug\MySql.Data.xml
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\bin\Debug\EC_rfidReader_manage.exe.config
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\bin\Debug\EC_rfidReader_manage.exe
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\bin\Debug\EC_rfidReader_manage.pdb
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\bin\Debug\Google.Protobuf.dll
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\bin\Debug\BouncyCastle.Crypto.dll
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\bin\Debug\Ubiety.Dns.Core.dll
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\bin\Debug\Renci.SshNet.dll
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\bin\Debug\MySql.Data.xml
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\bin\Debug\rfidlib_reader.pdb
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.csprojAssemblyReference.cache
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\obj\Debug\EC_rfidReader.Form1.resources
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.Properties.Resources.resources
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.csproj.GenerateResource.cache
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.csproj.CoreCompileInputs.cache
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.csproj.CopyComplete
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.exe
+C:\Userdata\MyFiles\Github\Nursing-RFID\EC_rfidReader_manage\obj\Debug\EC_rfidReader_manage.pdb

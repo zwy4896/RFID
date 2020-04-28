@@ -72,12 +72,12 @@ namespace EC_rfidReader
                 returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
             return returnBytes;
         }
-        
+
         private void b_open_Click(object sender, EventArgs e)
         {
             int iret = 0;
             string connstr = "";
-            
+
             if (cbb_comPort.Text == "USB")
             {
                 int nCount = reader.HIDDriver_Enum();
@@ -179,7 +179,7 @@ namespace EC_rfidReader
                 //tb_deviceInfo.AppendText("Serial Number:" + devInfo_arr[2]);
             }
         }
-        
+
         private void b_close_Click(object sender, EventArgs e)
         {
             int iret = 0;
@@ -217,7 +217,7 @@ namespace EC_rfidReader
                 iret = reader.RDR_TagInventory(AIType, AntennaSelCount, AntennaSel);//盘点标签
                 if (iret == 0)
                 {
-                    Invoke(tagReportHandler, new object[] { 0, null, null, null, null});
+                    Invoke(tagReportHandler, new object[] { 0, null, null, null, null });
                     Invoke(tagReportHandler, new object[] { 2, null, null, null, reader.RDR_GetTagDataReportCount().ToString() });
 
                     int TagDataReport;
@@ -236,7 +236,7 @@ namespace EC_rfidReader
                             string uidStr = BitConverter.ToString(uid).Replace("-", string.Empty);
                             //test_char = test_readTxt(uidStr);
                             //object[] pList = { 1, uidStr, "", dsfid.ToString("X2") + " - AFI:" + afi.ToString("X2") + " - BlockData:" + blockData, ant_id.ToString().PadLeft(2, '0') };
-                            object[] pList = {1, uidStr, null, null, null};
+                            object[] pList = { 1, uidStr, null, null, null };
                             Invoke(tagReportHandler, pList);
                         }
                     }
@@ -318,21 +318,22 @@ namespace EC_rfidReader
         {
             //MessageBox.Show(richTextBox2.Text.Length + " | " + textBox1.Text + " | ￥" + textBox2.Text);
 
-            string constructorString = "server=localhost;User Id=root;password=1234567890;Database=test";
+            string constructorString = "server=localhost;User Id=root;password=1235;Database=nursing";
+            //string constructorString = "server=localhost;User Id=root;password=1234567890;Database=test";
             MySqlConnection myConnnect = new MySqlConnection(constructorString);
             myConnnect.Open();
-            foreach(string charRFID in richTextBox2.Lines)
+            foreach (string charRFID in richTextBox2.Lines)
             {
                 if (charRFID == "")
                 {
                     continue;
                 }
                 //MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.test1 where RFID='" + charRFID + "';", myConnnect);
-                MySqlCommand myCmd = new MySqlCommand("select 1 from test.test1 where RFID = '" + charRFID + "';", myConnnect);
+                //MySqlCommand myCmd = new MySqlCommand("select 1 from test.test1 where RFID = '" + charRFID + "';", myConnnect);
+                MySqlCommand myCmd = new MySqlCommand("select 1 from nursing.test1 where RFID = '" + charRFID + "';", myConnnect);
                 //Console.WriteLine(myCmd.CommandText);
                 //Console.WriteLine(myCmd.ExecuteScalar());
-                if (myCmd.ExecuteScalar() != null)
-                {
+                if (myCmd.ExecuteScalar() != null          {
                     Console.WriteLine("更新数据");
                     MySqlCommand updateCmd = new MySqlCommand("UPDATE test1 SET name='" + textBox1.Text + "',price=" + textBox2.Text + " where RFID='" + charRFID + "';", myConnnect);
                     Console.WriteLine(updateCmd.CommandText);
