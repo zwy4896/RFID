@@ -67,6 +67,8 @@ namespace CSharpDEMO
             {
                 myConnnect.Close();
             }
+            myConnnect.Close();
+
             return state;
         }
     }

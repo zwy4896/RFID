@@ -16,3 +16,5 @@ Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\bin\Debug\MySql.Data.x
 Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.csproj.CopyComplete
 Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.login.resources
 Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.main.resources
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.UpdateForm.resources
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\CSharpDEMO\obj\Debug\CSharpDEMO.recharge.resources

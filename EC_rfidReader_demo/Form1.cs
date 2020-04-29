@@ -13,6 +13,7 @@ using System.IO;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 using CSharpDEMO;
+using Timer = System.Windows.Forms.Timer;
 
 namespace EC_rfidReader
 {
@@ -36,6 +37,7 @@ namespace EC_rfidReader
 
         Thread InvenThread;
         public static bool doInventory = false;
+        Timer time1 = new Timer();
 
         delegate void HandleInterfaceReport(int op, string uidStr, string blockDataStr, string DSFIDStr, string otherStr, string[] testChar); //委托处理接收数据
         HandleInterfaceReport tagReportHandler;
@@ -68,6 +70,12 @@ namespace EC_rfidReader
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.time1.Interval = 1000;
+            this.time1.Tick += new System.EventHandler(this.time1_Tick);
+            this.time1.Start();
+
+      
+
             int nCOMCnt = reader.COMPort_Enum();
 
             string comName = "";
@@ -84,7 +92,11 @@ namespace EC_rfidReader
                 cbb_comPort.SelectedIndex = 0;
             }
         }
-        
+        private void time1_Tick(object sender, EventArgs e)
+        {
+            lbl_timer.Text = "现在时间: \n" + DateTime.Now.ToString();
+        }
+
         private void b_open_Click(object sender, EventArgs e)
         {
             int iret = 0;
@@ -434,8 +446,8 @@ namespace EC_rfidReader
                     Console.WriteLine(updateCmd.CommandText);
                     updateCmd.ExecuteNonQuery();
                     //MessageBox.Show("刷卡成功! 共消费:" + out_totalPrice + "元" + " 余额:" + cost);
-                    label_cash.Text = out_totalPrice.ToString();
-                    label_balance.Text = card_info[2].ToString();
+                    label_cash.Text = "￥ " + out_totalPrice.ToString();
+                    label_balance.Text = "￥ " + (float.Parse(card_info[2]) - out_totalPrice).ToString();
                     label_display.Text = "祝您用餐愉快！";
                 }
                 else
@@ -518,6 +530,11 @@ namespace EC_rfidReader
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             System.Environment.Exit(0);
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

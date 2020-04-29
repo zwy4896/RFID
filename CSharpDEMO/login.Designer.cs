@@ -39,7 +39,7 @@
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(214, 176);
+            this.button1.Location = new System.Drawing.Point(223, 175);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // textBox_user
             // 
             this.textBox_user.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_user.Location = new System.Drawing.Point(146, 58);
+            this.textBox_user.Location = new System.Drawing.Point(155, 57);
             this.textBox_user.Name = "textBox_user";
             this.textBox_user.Size = new System.Drawing.Size(218, 21);
             this.textBox_user.TabIndex = 1;
@@ -58,7 +58,7 @@
             // textBox_pswd
             // 
             this.textBox_pswd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_pswd.Location = new System.Drawing.Point(146, 98);
+            this.textBox_pswd.Location = new System.Drawing.Point(155, 97);
             this.textBox_pswd.Name = "textBox_pswd";
             this.textBox_pswd.PasswordChar = '*';
             this.textBox_pswd.Size = new System.Drawing.Size(218, 21);
@@ -68,7 +68,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(111, 61);
+            this.label1.Location = new System.Drawing.Point(120, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(111, 101);
+            this.label2.Location = new System.Drawing.Point(120, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 3;
@@ -88,14 +88,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 259);
+            this.ClientSize = new System.Drawing.Size(537, 256);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_pswd);
             this.Controls.Add(this.textBox_user);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HD Tech 会员卡管理系统";
             this.ResumeLayout(false);
             this.PerformLayout();

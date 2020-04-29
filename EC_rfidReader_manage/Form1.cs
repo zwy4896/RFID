@@ -333,7 +333,8 @@ namespace EC_rfidReader
                 MySqlCommand myCmd = new MySqlCommand("select 1 from nursing.test1 where RFID = '" + charRFID + "';", myConnnect);
                 //Console.WriteLine(myCmd.CommandText);
                 //Console.WriteLine(myCmd.ExecuteScalar());
-                if (myCmd.ExecuteScalar() != null          {
+                if (myCmd.ExecuteScalar() != null)
+                {
                     Console.WriteLine("更新数据");
                     MySqlCommand updateCmd = new MySqlCommand("UPDATE test1 SET name='" + textBox1.Text + "',price=" + textBox2.Text + " where RFID='" + charRFID + "';", myConnnect);
                     Console.WriteLine(updateCmd.CommandText);
