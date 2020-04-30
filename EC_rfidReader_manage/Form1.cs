@@ -11,13 +11,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using MySql.Data.MySqlClient;
+using CSharpDEMO;
 
 namespace EC_rfidReader
 {
     public partial class Form1 : Form
     {
-        private RFIDLIB.rfidlib_reader reader = new RFIDLIB.rfidlib_reader();
+        DataOperator dataOper = new DataOperator();
 
+        private RFIDLIB.rfidlib_reader reader = new RFIDLIB.rfidlib_reader();
+        
         public UIntPtr hTag;
         public Byte enableAFI;
         public Byte AFI;
@@ -316,62 +319,103 @@ namespace EC_rfidReader
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(richTextBox2.Text.Length + " | " + textBox1.Text + " | ￥" + textBox2.Text);
-
-            string constructorString = "server=localhost;User Id=root;password=1235;Database=nursing";
-            //string constructorString = "server=localhost;User Id=root;password=1234567890;Database=test";
-            MySqlConnection myConnnect = new MySqlConnection(constructorString);
-            myConnnect.Open();
-            foreach (string charRFID in richTextBox2.Lines)
+            try
             {
-                if (charRFID == "")
+                foreach (string charRFID in richTextBox2.Lines)
                 {
-                    continue;
-                }
-                //MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.test1 where RFID='" + charRFID + "';", myConnnect);
-                //MySqlCommand myCmd = new MySqlCommand("select 1 from test.test1 where RFID = '" + charRFID + "';", myConnnect);
-                MySqlCommand myCmd = new MySqlCommand("select 1 from nursing.test1 where RFID = '" + charRFID + "';", myConnnect);
-                //Console.WriteLine(myCmd.CommandText);
-                //Console.WriteLine(myCmd.ExecuteScalar());
-                if (myCmd.ExecuteScalar() != null)
-                {
-                    Console.WriteLine("更新数据");
-                    MySqlCommand updateCmd = new MySqlCommand("UPDATE test1 SET name='" + textBox1.Text + "',price=" + textBox2.Text + " where RFID='" + charRFID + "';", myConnnect);
-                    Console.WriteLine(updateCmd.CommandText);
-                    updateCmd.ExecuteNonQuery();
-                }
-                else if (myCmd.ExecuteScalar() == null)
-                {
-                    Console.WriteLine("插入数据");
-                    MySqlCommand updateCmd = new MySqlCommand("INSERT INTO test1(RFID,name,price) VALUES('" + charRFID + "','" + textBox1.Text + "'," + textBox2.Text + ");", myConnnect);
-                    //MySqlCommand updateCmd = new MySqlCommand("UPDATE test SET name='" + textBox1.Text + "',price=" + textBox2.Text, myConnnect);
-                    Console.WriteLine(updateCmd.CommandText);
-                    updateCmd.ExecuteNonQuery();
+                    string constructorString = "SELECT 1 FROM test1 WHERE RFID='{0}'";
+                    if (charRFID == "")
+                    {
+                        continue;
+                    }
+                    constructorString = string.Format(constructorString, charRFID);
+                    int num = dataOper.ExecSQL(constructorString);
+                    if (num == 1)   // 更新数据
+                    {
+                        string updateCmd = "UPDATE test1 SET name='{0}',price={1} WHERE RFID='{2}'";
+                        updateCmd = string.Format(updateCmd, textBox1.Text, textBox2.Text, charRFID);
+                        dataOper.UpdateDB(updateCmd);
+                    }
+                    else if (num == 0)  // 插入数据
+                    {
+                        string insertCmd = "INSERT INTO test1(RFID,name,price) VALUES('{0}','{1}',{2})";
+                        insertCmd = string.Format(insertCmd, charRFID, textBox1.Text, textBox2.Text);
+                        dataOper.UpdateDB(insertCmd);
+                    }
                 }
             }
-            myConnnect.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("查询错误！" + ex.Message);
+            }
+            finally
+            {
+                if (dataOper.connection != null)
+                {
+                    //关闭数据库连接
+                    dataOper.connection.Close();
+                }
+            }
         }
-
         private void TextBox1_MouseClick(object sender, MouseEventArgs e)
         {
             textBox1.Text = "";
         }
-
         private void TextBox2_MouseClick(object sender, MouseEventArgs e)
         {
             textBox2.Text = "";
         }
-
         private void TextBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsNumber(e.KeyChar)) && e.KeyChar != (char)8)
+            //允许输入数字、小数点、删除键和负号  
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != (char)('.') && e.KeyChar != (char)('-'))
             {
+                MessageBox.Show("请输入正确的数字");
+                this.textBox1.Text = "";
                 e.Handled = true;
             }
-            else
+            if (e.KeyChar == (char)('-'))
             {
+                if (textBox1.Text != "")
+                {
+                    MessageBox.Show("请输入正确的数字");
+                    this.textBox1.Text = "";
+                    e.Handled = true;
+                }
             }
+            /*小数点只能输入一次*/
+            if (e.KeyChar == (char)('.') && ((TextBox)sender).Text.IndexOf('.') != -1)
+            {
+                MessageBox.Show("请输入正确的数字");
+                this.textBox2.Text = "";
+                e.Handled = true;
+            }
+            /*第一位不能为小数点*/
+            if (e.KeyChar == (char)('.') && ((TextBox)sender).Text == "")
+            {
+                MessageBox.Show("请输入正确的数字");
+                this.textBox2.Text = "";
+                e.Handled = true;
+            }
+            /*第一位是0，第二位必须为小数点*/
+            if (e.KeyChar != (char)('.') && ((TextBox)sender).Text == "0")
+            {
+                MessageBox.Show("请输入正确的数字");
+                this.textBox2.Text = "";
+                e.Handled = true;
+            }
+            /*第一位是负号，第二位不能为小数点*/
+            if (((TextBox)sender).Text == "-" && e.KeyChar == (char)('.'))
+            {
+                MessageBox.Show("请输入正确的数字");
+                this.textBox2.Text = "";
+                e.Handled = true;
+            }
+        }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Environment.Exit(0);
         }
     }
 }

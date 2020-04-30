@@ -33,14 +33,6 @@ namespace CSharpDEMO
             //Console.WriteLine("OK");
             try
             {
-                ////myConnnect = new SqlConnection(constructorString);
-                //myConnnect = new MySqlConnection(constructorString);
-                //myConnnect.Open();
-                //MySqlDataAdapter sda = new MySqlDataAdapter("SELECT * FROM test.card_info", myConnnect);
-                ////创建DataSet类的对象
-                //DataSet ds = new DataSet();
-                ////使用SqlDataAdapter对象sda将查新结果填充到DataSet对象ds中
-                //sda.Fill(ds);
                 DataSet ds = dataOper.GetDataSet(constructorString);
                 //设置表格控件的DataSource属性
                 dataGridView1.DataSource = ds.Tables[0];
@@ -87,13 +79,7 @@ namespace CSharpDEMO
                 string constructorString = "select * from test.card_info where RFID like '%{0}%'";
                 try
                 {
-                    //myConnnect = new MySqlConnection(constructorString);
-                    //myConnnect.Open();
-                    //string sql = "select * from test.card_info where rfid like '%{0}%'";
                     constructorString = string.Format(constructorString, tb_rfid.Text);
-                    //MySqlDataAdapter sda = new MySqlDataAdapter(constructorString, myConnnect);
-                    //DataSet ds = new DataSet();
-                    //sda.Fill(ds);
                     DataSet ds = dataOper.GetDataSet(constructorString);
                     if (ds != null)
                     {

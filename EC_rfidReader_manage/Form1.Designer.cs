@@ -70,7 +70,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(884, 50);
+            this.panel3.Size = new System.Drawing.Size(964, 50);
             this.panel3.TabIndex = 6;
             // 
             // splitContainer1
@@ -164,7 +164,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(884, 511);
+            this.tabControl1.Size = new System.Drawing.Size(964, 559);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 8;
             // 
@@ -176,7 +176,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 36);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(876, 471);
+            this.tabPage1.Size = new System.Drawing.Size(956, 519);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "清单";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -190,7 +190,7 @@
             this.richTextBox2.Font = new System.Drawing.Font("宋体", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.richTextBox2.Location = new System.Drawing.Point(3, 3);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(310, 412);
+            this.richTextBox2.Size = new System.Drawing.Size(390, 460);
             this.richTextBox2.TabIndex = 10;
             this.richTextBox2.Text = "";
             // 
@@ -206,9 +206,9 @@
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.b_stopInventory);
             this.panel2.Controls.Add(this.b_inventory);
-            this.panel2.Location = new System.Drawing.Point(319, 3);
+            this.panel2.Location = new System.Drawing.Point(399, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(554, 412);
+            this.panel2.Size = new System.Drawing.Size(554, 460);
             this.panel2.TabIndex = 6;
             // 
             // button1
@@ -293,9 +293,9 @@
             this.panel5.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel5.Controls.Add(this.label2);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(3, 415);
+            this.panel5.Location = new System.Drawing.Point(3, 463);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(870, 53);
+            this.panel5.Size = new System.Drawing.Size(950, 53);
             this.panel5.TabIndex = 9;
             // 
             // label2
@@ -306,7 +306,7 @@
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label2.Location = new System.Drawing.Point(0, -3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(870, 56);
+            this.label2.Size = new System.Drawing.Size(950, 56);
             this.label2.TabIndex = 9;
             this.label2.Text = "数量: ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -318,20 +318,21 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(884, 511);
+            this.panel1.Size = new System.Drawing.Size(964, 559);
             this.panel1.TabIndex = 6;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(964, 609);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HD Tech 智慧食堂标签管理系统";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel3.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
