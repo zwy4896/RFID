@@ -22,18 +22,22 @@ namespace CSharpDEMO
         {
             string user = textBox_user.Text.ToString();
             string pswd = textBox_pswd.Text.ToString();
-            if (Check_ID("admin", "admin"))
-            {
-                main form = new main();
-                form.Show();
-                this.Visible = false;
-            }
+            //if (Check_ID("admin", "admin"))
+            //{
+            //    main form = new main();
+            //    form.Show();
+            //    this.Visible = false;
+            //}
+            main form = new main();
+            form.Show();
+            this.Visible = false;
         }
         private bool Check_ID(string user, string pswd)
         {
             bool state = false;
             MySqlDataReader reader = null;
             string constructorString = "server=localhost;User Id=root;password=1234567890;Database=test";
+            //string constructorString = "server=localhost;User Id=root;password=1235;Database=c";
             MySqlConnection myConnnect = new MySqlConnection(constructorString);
             myConnnect.Open();
             MySqlCommand myCmd = new MySqlCommand("SELECT * FROM test.admin where user='" + user + "'", myConnnect);

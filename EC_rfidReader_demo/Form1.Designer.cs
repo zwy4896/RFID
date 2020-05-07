@@ -53,12 +53,12 @@
             this.label_balance = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -79,7 +79,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1294, 50);
+            this.panel3.Size = new System.Drawing.Size(1024, 50);
             this.panel3.TabIndex = 6;
             // 
             // splitContainer1
@@ -176,7 +176,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1294, 863);
+            this.tabControl1.Size = new System.Drawing.Size(1024, 718);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 8;
             // 
@@ -190,7 +190,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 36);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1286, 823);
+            this.tabPage1.Size = new System.Drawing.Size(1016, 678);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "菜单";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -203,7 +203,7 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.b_stopInventory);
             this.panel2.Controls.Add(this.b_inventory);
-            this.panel2.Location = new System.Drawing.Point(637, 596);
+            this.panel2.Location = new System.Drawing.Point(367, 451);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(646, 147);
             this.panel2.TabIndex = 6;
@@ -272,9 +272,9 @@
             this.panel4.Controls.Add(this.label_display);
             this.panel4.Controls.Add(this.label_cash);
             this.panel4.Controls.Add(this.label_balance);
-            this.panel4.Location = new System.Drawing.Point(636, 3);
+            this.panel4.Location = new System.Drawing.Point(366, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(647, 587);
+            this.panel4.Size = new System.Drawing.Size(647, 444);
             this.panel4.TabIndex = 11;
             // 
             // lbl_timer
@@ -292,7 +292,7 @@
             this.label4.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label4.Font = new System.Drawing.Font("宋体", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Location = new System.Drawing.Point(45, 300);
+            this.label4.Location = new System.Drawing.Point(46, 265);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(167, 65);
             this.label4.TabIndex = 12;
@@ -305,7 +305,7 @@
             this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label3.Font = new System.Drawing.Font("宋体", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(44, 190);
+            this.label3.Location = new System.Drawing.Point(45, 155);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(168, 69);
             this.label3.TabIndex = 11;
@@ -318,9 +318,9 @@
             this.label_display.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label_display.Font = new System.Drawing.Font("宋体", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_display.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label_display.Location = new System.Drawing.Point(1, 462);
+            this.label_display.Location = new System.Drawing.Point(1, 342);
             this.label_display.Name = "label_display";
-            this.label_display.Size = new System.Drawing.Size(646, 52);
+            this.label_display.Size = new System.Drawing.Size(646, 102);
             this.label_display.TabIndex = 10;
             this.label_display.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -330,7 +330,7 @@
             this.label_cash.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label_cash.Font = new System.Drawing.Font("宋体", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_cash.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label_cash.Location = new System.Drawing.Point(202, 198);
+            this.label_cash.Location = new System.Drawing.Point(203, 163);
             this.label_cash.Name = "label_cash";
             this.label_cash.Size = new System.Drawing.Size(428, 52);
             this.label_cash.TabIndex = 9;
@@ -342,7 +342,7 @@
             this.label_balance.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label_balance.Font = new System.Drawing.Font("宋体", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_balance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label_balance.Location = new System.Drawing.Point(202, 306);
+            this.label_balance.Location = new System.Drawing.Point(203, 271);
             this.label_balance.Name = "label_balance";
             this.label_balance.Size = new System.Drawing.Size(428, 52);
             this.label_balance.TabIndex = 8;
@@ -357,7 +357,7 @@
             this.richTextBox2.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.richTextBox2.Location = new System.Drawing.Point(3, 3);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(628, 740);
+            this.richTextBox2.Size = new System.Drawing.Size(358, 595);
             this.richTextBox2.TabIndex = 10;
             this.richTextBox2.Text = "";
             // 
@@ -371,17 +371,39 @@
             this.panel5.Controls.Add(this.button3);
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.label1);
-            this.panel5.Location = new System.Drawing.Point(3, 749);
+            this.panel5.Location = new System.Drawing.Point(3, 604);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1280, 80);
+            this.panel5.Size = new System.Drawing.Size(1010, 80);
             this.panel5.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(635, 2);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(289, 72);
+            this.label6.TabIndex = 10;
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(158, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(319, 72);
+            this.label5.TabIndex = 10;
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(1200, 23);
+            this.button3.Location = new System.Drawing.Point(930, 23);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 31);
             this.button3.TabIndex = 8;
@@ -424,36 +446,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1294, 863);
+            this.panel1.Size = new System.Drawing.Size(1024, 718);
             this.panel1.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(158, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(319, 72);
-            this.label5.TabIndex = 10;
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(635, 2);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(304, 72);
-            this.label6.TabIndex = 10;
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1294, 913);
+            this.ClientSize = new System.Drawing.Size(1024, 768);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

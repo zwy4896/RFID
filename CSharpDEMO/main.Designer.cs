@@ -49,13 +49,13 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1280, 585);
+            this.dataGridView1.Size = new System.Drawing.Size(1358, 542);
             this.dataGridView1.TabIndex = 0;
             // 
             // btn_activation
             // 
             this.btn_activation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_activation.Location = new System.Drawing.Point(1019, 11);
+            this.btn_activation.Location = new System.Drawing.Point(1097, 11);
             this.btn_activation.Name = "btn_activation";
             this.btn_activation.Size = new System.Drawing.Size(75, 23);
             this.btn_activation.TabIndex = 1;
@@ -66,7 +66,7 @@
             // btn_recharge
             // 
             this.btn_recharge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_recharge.Location = new System.Drawing.Point(1100, 11);
+            this.btn_recharge.Location = new System.Drawing.Point(1178, 11);
             this.btn_recharge.Name = "btn_recharge";
             this.btn_recharge.Size = new System.Drawing.Size(75, 23);
             this.btn_recharge.TabIndex = 1;
@@ -77,7 +77,7 @@
             // btn_research
             // 
             this.btn_research.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_research.Location = new System.Drawing.Point(278, 11);
+            this.btn_research.Location = new System.Drawing.Point(356, 11);
             this.btn_research.Name = "btn_research";
             this.btn_research.Size = new System.Drawing.Size(75, 23);
             this.btn_research.TabIndex = 1;
@@ -91,13 +91,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_rfid.Location = new System.Drawing.Point(10, 11);
             this.tb_rfid.Name = "tb_rfid";
-            this.tb_rfid.Size = new System.Drawing.Size(181, 21);
+            this.tb_rfid.Size = new System.Drawing.Size(259, 21);
             this.tb_rfid.TabIndex = 2;
             // 
             // btn_readCard
             // 
             this.btn_readCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_readCard.Location = new System.Drawing.Point(197, 11);
+            this.btn_readCard.Location = new System.Drawing.Point(275, 11);
             this.btn_readCard.Name = "btn_readCard";
             this.btn_readCard.Size = new System.Drawing.Size(75, 23);
             this.btn_readCard.TabIndex = 3;
@@ -108,7 +108,7 @@
             // btn_diplayAll
             // 
             this.btn_diplayAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_diplayAll.Location = new System.Drawing.Point(359, 11);
+            this.btn_diplayAll.Location = new System.Drawing.Point(437, 11);
             this.btn_diplayAll.Name = "btn_diplayAll";
             this.btn_diplayAll.Size = new System.Drawing.Size(75, 23);
             this.btn_diplayAll.TabIndex = 1;
@@ -125,16 +125,16 @@
             this.panel1.Controls.Add(this.tb_rfid);
             this.panel1.Controls.Add(this.btn_diplayAll);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 591);
+            this.panel1.Location = new System.Drawing.Point(0, 548);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1280, 201);
+            this.panel1.Size = new System.Drawing.Size(1358, 201);
             this.panel1.TabIndex = 4;
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 792);
+            this.ClientSize = new System.Drawing.Size(1358, 749);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

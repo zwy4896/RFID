@@ -14,6 +14,7 @@ namespace CSharpDEMO
         // 数据库连接字符串
         //private static string connString = @"server=localhost;User Id=root;password=1234567890;Database=test";
         private static string connString = @"Data Source=localhost;Database=test;User ID=root;Pwd=1234567890;";
+        //private static string connString = @"Data Source=localhost;Database=test;User ID=root;Pwd=1235;";
         // 数据库连接对象
         public MySqlConnection connection = new MySqlConnection(connString);
 
@@ -67,6 +68,37 @@ namespace CSharpDEMO
             //connection.Open();  //  打开连接
             MySqlDataReader dataReader = command.ExecuteReader();
             return dataReader;
+        }
+        public bool ExcuteTransactionSQL(List<string> strSQL)
+        {
+            connection.Open();
+            MySqlTransaction transaction = connection.BeginTransaction();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            cmd.Transaction = transaction;
+            try
+            {
+                for (int n = 0; n < strSQL.Count; n++)
+                {
+                    string strsql = strSQL[n];
+                    if (strsql.Trim().Length > 1)
+                    {
+                        cmd.CommandText = strsql;
+                        cmd.ExecuteNonQuery();
+                        Console.WriteLine(strsql);
+                    }
+                }
+                //cmd.ExecuteNonQuery();
+                transaction.Commit();
+                connection.Close();
+                return true;
+            }
+            catch
+            {
+                transaction.Rollback();
+                connection.Close();
+                return false;
+            }
         }
     }
 }

@@ -1,0 +1,17 @@
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Release\EC_rfidReader_manage.exe.config
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Release\EC_rfidReader_manage.exe
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Release\EC_rfidReader_manage.pdb
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Release\MySql.Data.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Release\Google.Protobuf.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Release\BouncyCastle.Crypto.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Release\Ubiety.Dns.Core.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Release\Renci.SshNet.dll
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\bin\Release\MySql.Data.xml
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Release\EC_rfidReader_manage.csprojAssemblyReference.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Release\EC_rfidReader.Form1.resources
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Release\EC_rfidReader_manage.Properties.Resources.resources
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Release\EC_rfidReader_manage.csproj.GenerateResource.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Release\EC_rfidReader_manage.csproj.CoreCompileInputs.cache
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Release\EC_rfidReader_manage.csproj.CopyComplete
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Release\EC_rfidReader_manage.exe
+Z:\Documents\EC_rfidReader_demo-C#net45 1.0.07\EC_rfidReader_manage\obj\Release\EC_rfidReader_manage.pdb

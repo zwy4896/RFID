@@ -99,6 +99,7 @@
             this.tb_chongzhi.Name = "tb_chongzhi";
             this.tb_chongzhi.Size = new System.Drawing.Size(161, 21);
             this.tb_chongzhi.TabIndex = 3;
+            this.tb_chongzhi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_chongzhi_KeyPress);
             // 
             // tb_name
             // 

@@ -42,6 +42,8 @@ namespace EC_rfidReader
 
         delegate void HandleInterfaceReport(int op, string uidStr, string blockDataStr, string DSFIDStr, string otherStr, string[] testChar); //委托处理接收数据
         HandleInterfaceReport tagReportHandler;
+        delegate void HandleShuaka();
+        HandleShuaka ShuakaHandler;
         float total_price = 0;  // 菜品总价
         float out_totalPrice = 0;
         //string[] dish_name;
@@ -49,6 +51,7 @@ namespace EC_rfidReader
         {
             InitializeComponent();
             tagReportHandler = new HandleInterfaceReport(tagReport);//实例化委托对象（处理接收数据）
+            ShuakaHandler = new HandleShuaka(Shuaka);
         }
 
         //转换卡号专用
@@ -230,51 +233,82 @@ namespace EC_rfidReader
         {
             Byte AIType = RFIDLIB.rfidlib_def.AI_TYPE_NEW;
             AntennaSelCount = 0;
-            while (!_shouldStop)
+            int iret;
+            iret = reader.RDR_TagInventory(AIType, AntennaSelCount, AntennaSel);//盘点标签
+            if (iret == 0)
             {
-                int iret;
-                iret = reader.RDR_TagInventory(AIType, AntennaSelCount, AntennaSel);//盘点标签
-                if (iret == 0)
+                Invoke(tagReportHandler, new object[] { 0, null, null, null, null, null });
+                Invoke(tagReportHandler, new object[] { 2, null, null, null, reader.RDR_GetTagDataReportCount().ToString(), null });
+
+                int TagDataReport;
+                TagDataReport = reader.RDR_GetTagDataReportCount();//获取标签数量
+                int tagData = TagDataReport;
+                //while (TagDataReport > 0)
+                //{
+                //    TagDataReport--;
+                //    int ant_id = 0;
+                //    Byte dsfid = 0;
+                //    Byte[] uid = new Byte[8];
+
+                //    //获取标签数据（数据列表序号，天线ID号，dsfid，标签ID）
+                //    iret = reader.ISO15693_ParseTagDataReport(TagDataReport, ref ant_id, ref dsfid, ref uid);
+                //    if (iret == 0)
+                //    {
+                //        string[] test_char;
+
+                //        string uidStr = BitConverter.ToString(uid).Replace("-", string.Empty);
+                //        test_char = Read_Menu(uidStr);
+                //        if (test_char[1] != "")
+                //        {
+                //            total_price += float.Parse(test_char[1]);
+                //        }
+                //        else
+                //        {
+                //            continue;
+                //        }
+                //        //object[] pList = { 1, uidStr, "", dsfid.ToString("X2") + " - AFI:" + afi.ToString("X2") + " - BlockData:" + blockData, ant_id.ToString().PadLeft(2, '0') };
+                //        object[] pList = {1, uidStr, null, null, null, test_char};
+                //        //Console.WriteLine(count.ToString() + " " + tagData.ToString());
+                //        Invoke(tagReportHandler, pList);
+                //    }
+                //}
+                while (TagDataReport > 0)
                 {
-                    Invoke(tagReportHandler, new object[] { 0, null, null, null, null, null });
-                    Invoke(tagReportHandler, new object[] { 2, null, null, null, reader.RDR_GetTagDataReportCount().ToString(), null });
+                    TagDataReport--;
+                    int ant_id = 0;
+                    Byte dsfid = 0;
+                    Byte[] uid = new Byte[8];
 
-                    int TagDataReport;
-                    TagDataReport = reader.RDR_GetTagDataReportCount();//获取标签数量
-                    //int tagData = TagDataReport;
-                    while (TagDataReport > 0)
+                    //获取标签数据（数据列表序号，天线ID号，dsfid，标签ID）
+                    iret = reader.ISO15693_ParseTagDataReport(TagDataReport, ref ant_id, ref dsfid, ref uid);
+                    if (iret == 0)
                     {
-                        TagDataReport--;
-                        int ant_id = 0;
-                        Byte dsfid = 0;
-                        Byte[] uid = new Byte[8];
+                        string[] test_char;
 
-                        //获取标签数据（数据列表序号，天线ID号，dsfid，标签ID）
-                        iret = reader.ISO15693_ParseTagDataReport(TagDataReport, ref ant_id, ref dsfid, ref uid);
-                        if (iret == 0)
+                        string uidStr = BitConverter.ToString(uid).Replace("-", string.Empty);
+                        test_char = Read_Menu(uidStr);
+                        if (test_char[1] != "")
                         {
-                            string[] test_char;
-
-                            string uidStr = BitConverter.ToString(uid).Replace("-", string.Empty);
-                            test_char = Read_Menu(uidStr);
-                            if (test_char[1] != "")
-                            {
-                                total_price += float.Parse(test_char[1]);
-                            }
-                            else
-                            {
-                                continue;
-                            }
-                            //object[] pList = { 1, uidStr, "", dsfid.ToString("X2") + " - AFI:" + afi.ToString("X2") + " - BlockData:" + blockData, ant_id.ToString().PadLeft(2, '0') };
-                            object[] pList = {1, uidStr, null, null, null, test_char};
-                            //Console.WriteLine(count.ToString() + " " + tagData.ToString());
-                            Invoke(tagReportHandler, pList);
+                            total_price += float.Parse(test_char[1]);
                         }
+                        else
+                        {
+                            continue;
+                        }
+                        //object[] pList = { 1, uidStr, "", dsfid.ToString("X2") + " - AFI:" + afi.ToString("X2") + " - BlockData:" + blockData, ant_id.ToString().PadLeft(2, '0') };
+                        object[] pList = { 1, uidStr, null, null, null, test_char };
+                        //Console.WriteLine(count.ToString() + " " + tagData.ToString());
+                        Invoke(tagReportHandler, pList);
                     }
                 }
                 out_totalPrice = total_price;
                 total_price = 0;
-                Thread.Sleep(5);
+                //Thread.Sleep(5);
+                if (out_totalPrice != 0)
+                {
+                    Invoke(ShuakaHandler);
+                    //Thread.Sleep(10000);
+                }
             }
             //MessageBox.Show(out_totalPrice.ToString());
         }
@@ -486,6 +520,22 @@ namespace EC_rfidReader
                 Update_Card_Info(rfid, balance, card_info);
             }
             //Console.WriteLine(card_info[2].ToString());
+        }
+        private void Shuaka()
+        {
+            string rfid = Read_Card();
+            float balance = 0;
+            string[] card_info = Read_Card_Info(rfid);
+            if (card_info[0] != "" && card_info != null)
+            {
+                balance = Convert.ToSingle(card_info[1]); // 账户余额
+                balance -= out_totalPrice;
+            }
+            if (rfid != "")
+            {
+                Update_Card_Info(rfid, balance, card_info);
+            }
+            
         }
         private string Read_Card()
         {
